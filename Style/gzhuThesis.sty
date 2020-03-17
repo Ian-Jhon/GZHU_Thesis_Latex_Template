@@ -1,0 +1,282 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gzhuThesis}[2020/03/17 v2.0 Guangzhou University Thesis Package]
+\RequirePackage{ifthen}
+%\RequirePackage[UTF8]{ctex}
+\RequirePackage{amsmath, amsfonts, mathrsfs, latexsym, gensymb}
+\RequirePackage{graphicx, subfigure}
+\RequirePackage{indentfirst}
+\RequirePackage{tikz}
+\usetikzlibrary{patterns,decorations.pathmorphing,calc}
+\RequirePackage[pdfstartview=FitH,
+colorlinks,linkcolor=blue,anchorcolor=green,citecolor=red,
+bookmarksnumbered=true, bookmarksopen=true,
+hyperindex, plainpages=false]{hyperref}
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\RequirePackage{titlesec}
+%\RequirePackage[top=2.54cm,bottom=2.54cm,left=3.0cm,right=2.6cm]{geometry}%上下页边距为 2.54cm、左边距为 3.0cm、右边距为 2.6cm
+\RequirePackage[top=3.54cm,bottom=2.54cm,inner=3.0cm,outer=2.6cm]{geometry}%上下页边距为 2.54cm、左边距为 3.0cm、右边距为 2.6cm
+\RequirePackage{titletoc}
+\RequirePackage{fancyhdr}
+%\RequirePackage[size=small]{caption}%改变图标标题字体大小为5号字。
+\RequirePackage{array}
+\RequirePackage[square, comma, sort&compress, numbers]{natbib}
+\RequirePackage[2015]{Style/gbt7714}
+\setcitestyle{square,numbers}
+%\setcitestyle{citesep={},aysep={},yysep={;},notesep={}}
+%%\setcitestyle 命令可以用来改变引用样式的设置，
+%%引用模式 authoryear、numbers、super
+%%括号 round、square、open=char,close=char
+%%引用条目分隔符 分号、逗号、citesep=char
+%%作者年份分隔符 aysep=char
+%%共同作者年份分隔符 yysep=char
+%%注解分隔符 notesep=text\pagestyle{fancy}
+%%%\def\celsius{\ensuremath{^\circ\hspace{-0.09em}\mathrm{C}}}
+%%%\def\degree{\ensuremath{^\circ}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\song}{\CJKfamily{song}} % 宋体 (Windows自带simsun.ttf)
+%\newcommand{\fs}{\CJKfamily{fs}} % 仿宋体 (Windows自带simfs.ttf)
+%\newcommand{\kai}{\CJKfamily{kai}} % 楷体 (Windows自带simkai.ttf)
+%\newcommand{\hei}{\CJKfamily{hei}} % 黑体 (Windows自带simhei.ttf)
+%\newcommand{\li}{\CJKfamily{li}} % 隶书 (Windows自带simli.ttf)
+%\newcommand{\you}{\CJKfamily{you}} % 幼圆 (Windows自带simyou.ttf)
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\yichu}{\fontsize{32pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont} % 字号设置
+%\renewcommand{\huge}{\fontsize{22pt}{\baselineskip}\selectfont}%二号
+%\renewcommand{\LARGE}{\fontsize{18pt}{\baselineskip}\selectfont}%小二
+%\renewcommand{\Large}{\fontsize{15pt}{\baselineskip}\selectfont}%小三
+%\renewcommand{\large}{\fontsize{14pt}{\baselineskip}\selectfont}%四号
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\section}{\centering\xiaoerhao\hei}{第 \thesection \quad\!\!\!\!章}{1em}{}%小二号黑体，居中
+\titleformat{\subsection}{\flushleft\xiaosanhao\hei}{\thesubsection}{1em}{}%小三号黑体，居左
+\titleformat{\subsubsection}{\flushleft\sihao\hei}{\thesubsubsection}{1em}{}%四号黑体，居左
+\headheight=1.26em
+%\chead{\includegraphics[scale=0.3]{logo/zhi.jpg}}
+\lhead{}
+\rhead{}\pagestyle{fancy}%\sectionmark 的重定义需要在 \pagestyle 之后生效
+\fancyhead[OR]{\leftmark}
+\fancyhead[EL]{\@title}%{\leftmark}
+\fancyfoot[EC,OC]{$-\cdot$\ \thepage\ $\cdot-$}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\cleardoublepage}{\relax%强制章节从奇数页开始
+  \clearpage
+  \if@twoside \ifodd\c@page\relax\else
+  \thispagestyle{empty}%
+  \tikz[remember picture, overlay] \node  at (current page.center){};%{本文模板作者：谢洪鲸老师};
+  \newpage\fi\fi}
+\newcommand{\ctoday}{\number\year 年\number\month 月\number\day 日}
+\def\pgfsysdriver{pgfsys-dvips.def}%{pgfsys-dvipdfm.def}%中文文字可复制
+\renewcommand{\baselinestretch}{1.6}%要求行距为23磅，大约为这个行距参数。
+\setcounter{tocdepth}{2}%目录页只列出2级目录
+\renewcommand\contentsname{目\hspace{1em}录}
+\renewcommand\refname{参考文献}
+%\renewcommand{\appendixname}{附\hspace{1em}录~\thesection}
+\renewcommand\indexname{索\hspace{1em}引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\renewcommand\listfigurename{插图目录}
+\renewcommand\listtablename{表格目录}
+\renewcommand\indexname{索引}
+\renewcommand\abstractname{摘要}
+\renewcommand\partname{部分}
+\titlecontents{section}[0pt]{\vspace{.5\baselineskip}\bfseries}
+{\thecontentslabel\quad}{}
+{\hspace{.5em}\titlerule*[1em]{$\cdot$}\contentspage}
+\numberwithin{equation}{section}\numberwithin{figure}{section}\numberwithin{table}{section}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thesubfigure}{\thefigure-(\alph{subfigure})}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\allowdisplaybreaks%允许公式换页
+\parindent=2em%新段缩进量
+\def\@define@term#1{
+  \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname @#1\endcsname{##1}}
+  \csname #1\endcsname{}}
+\@define@term{classification}
+\@define@term{UDC}
+\@define@term{studentnumber}
+\@define@term{confidential}
+\@define@term{condate}
+\@define@term{conterm}
+%
+%\@define@term{thesisname}
+\@define@term{cdegree}
+\@define@term{school}
+\@define@term{xibie}
+\@define@term{class}
+\@define@term{major}
+\@define@term{field}
+\@define@term{defcdate}
+\@define@term{supervisor}
+\@define@term{defcomchair}
+\@define@term{defcommember}
+%
+\@define@term{etitle}
+\@define@term{eauthor}
+\@define@term{eschool}
+\@define@term{emajor}
+\@define@term{edegree}
+\@define@term{defedate}
+\@define@term{esupervisor}
+
+\newcommand{\makecover}{
+\begin{titlepage}
+%\thispagestyle{empty}
+\newgeometry{left=1.3cm,right=0.5cm,top=2.5cm,bottom=2.5cm}
+%\textbf{
+\begin{minipage}{0.28\paperwidth}
+  \begin{tabular}{l@{\hspace{1ex}}p{3.3cm}}
+    分\hfill 类\hfill 号：&\@classification\\[-0.8ex]
+    \cline{2-2}
+    学校代码：&\@UDC\\[-0.8ex]
+    \cline{2-2}
+    学\hfill 号：&\@studentnumber\\[-0.8ex]
+    \cline{2-2}
+  \end{tabular}
+\end{minipage}
+\begin{minipage}{0.25\paperwidth}
+\centerline{\includegraphics[scale=0.9]{logo/xiaohui.jpg}}
+\end{minipage}
+\begin{minipage}{0.25\paperwidth}
+  \begin{tabular}{r@{\hspace{1ex}}p{3.3cm}}
+    密\hfill 级：&\@confidential\\[-0.8ex]
+    \cline{2-2}
+    保密日期：&\@condate\\[-0.8ex]
+    \cline{2-2}
+    保密期限：&\@conterm\\[-0.8ex]
+    \cline{2-2}
+  \end{tabular}
+\end{minipage}
+%}%
+\vspace*{1.0cm}
+\begin{center}
+%\includegraphics[scale=0.6]{logo/xiaohui.jpg}
+~\includegraphics[scale=0.12]{logo/gzhu.jpg}\\
+%\includegraphics[scale=0.5]{logo/benke.jpg}
+\vspace*{0.5em}
+\textbf{
+\begin{tabular}{r@{\hspace{1ex}}p{7.8cm}}
+\Huge{\@cdegree 论文}%论文类别
+\end{tabular}
+}\\
+\vspace{1cm}
+\begin{tabular}{p{0.7\paperwidth}<{\centering}}
+\erhao{\hei\@title}%标题   二号黑体
+\vspace*{1em}
+\end{tabular}\\
+\vspace*{0.5cm}
+\textbf{
+\begin{tabular}{r@{\hspace{1ex}}p{7.8cm}}
+\erhao{\@author}%作者
+\end{tabular}
+}\\
+\vspace*{0.8cm}
+\xiaoerhao{\textbf{
+\begin{tabular}{r@{\hspace{1ex}}p{5.6cm}}
+%学\hfill 院&\@school\\[-0.8ex]
+%\cline{2-2}
+%系\hfill 别&\@xibie\\[-0.8ex]
+%\cline{2-2}
+学\hfill 科\hfill 专\hfill 业（领域）：&\@major\\[-0.8ex]
+\cline{2-2}
+%班级名称&\@class\\[-0.8ex]
+研\hfill 究\hfill 方\hfill 向：&\@field\\[-0.8ex]
+\cline{2-2}
+论\hfill 文\hfill 答\hfill 辩\hfill 日\hfill 期：&\@defcdate\\[-0.8ex]
+\cline{2-2}
+指\hfill 导\hfill 教\hfill 师（签名）：&\@supervisor\\[-0.8ex]
+\cline{2-2}
+答辩委员会主席（签名）：&\@defcomchair\\[-0.8ex]
+\cline{2-2}
+答辩委员会委员（签名）：&\@defcommember\\[-0.8ex]
+\cline{2-2}
+&\@defcommember\\[-0.8ex]
+\cline{2-2}
+&\@defcommember\\[-0.8ex]
+\cline{2-2}
+&\@defcommember\\[-0.8ex]
+\cline{2-2}
+\end{tabular}
+}}
+
+%\vspace{2.3cm}
+%\Huge{\textbf{教务处}}
+\end{center}
+\end{titlepage}
+}
+%English Cover
+\newcommand{\makeecover}{
+\begin{titlepage}
+\newgeometry{left=1.3cm,right=0.5cm,top=2.5cm,bottom=2.5cm}
+\begin{center}
+\includegraphics[scale=0.7]{logo/xiaohui.jpg}
+%\includegraphics[scale=0.12]{logo/gzhu.jpg}\\
+%%\includegraphics[scale=0.5]{logo/benke.jpg}
+\vspace*{0.8cm}
+
+\textbf{
+\begin{tabular}{p{0.75\paperwidth}<{\centering}}
+\erhao{\@etitle}%标题
+\vspace*{0.5em}
+\end{tabular}
+}\\
+
+\vspace*{0.5em}
+\xiaoerhao{
+\begin{tabular}{p{0.8\paperwidth}<{\centering}}
+A thesis submitted to the\\ Guangzhou University \\
+in partial fulfillment of the requirement \\
+for the degree of \\ \@edegree \\
+in \@emajor\\
+By \\
+\textbf{\@eauthor} \\
+\vspace*{0.5em}
+Supervisor: \@esupervisor\\
+\vspace*{0.2em}
+\@defedate\\
+\vspace{0.2em}
+\textbf{\@eschool, Guangzhou University}
+\end{tabular}
+}\\
+
+\end{center}
+\end{titlepage}
+
+%%Copy right
+%\newcommand{\makeright}{
+%\begin{titlepage}
+%\newgeometry{left=1.3cm,right=0.5cm,top=2.5cm,bottom=2.5cm}
+%\begin{center}
+%\includegraphics[scale=0.7]{logo/xiaohui.jpg}
+%\vspace*{0.8cm}
+%
+%\textbf{
+%\begin{tabular}{p{0.75\paperwidth}<{\centering}}
+%\erhao{\@etitle}%标题
+%\vspace*{0.5em}
+%\end{tabular}
+%}\\
+%
+%\end{center}
+%\end{titlepage}
+
+\restoregeometry
+
+}
+\makeatletter
+    \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+\makeatother
+\endinput
