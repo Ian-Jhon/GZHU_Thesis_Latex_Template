@@ -1,6 +1,6 @@
 # 广州大学-学位论文Latex模板
 
-本模板基于：https://github.com/whitelok/GZHU_Latex_Template，主要使用Latex生成广州大学学位论文
+本模板基于：https://github.com/whitelok/GZHU_Latex_Template, 主要使用Latex生成广州大学学位论文
 
 ## 主要功能
 
