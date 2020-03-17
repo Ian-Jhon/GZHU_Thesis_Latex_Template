@@ -1,0 +1,97 @@
+%!TEX program = xelatex
+\documentclass[UTF8,a4paper,12pt,twoside]{article}%A4纸，正文为小四号字，对应12pt
+%\usepackage{appendix}
+\usepackage{tabularx,longtable,threeparttable,booktabs}%表格
+\usepackage{diagbox}
+\usepackage{multido}
+%\usepackage{underscore}
+\usepackage{float}
+\usepackage{algorithmic}
+%\renewcommand{\algorithmname}{算法}
+%Add by Karl_Lok
+\usepackage[BoldFont,SlantFont,CJKchecksingle]{xeCJK}
+\setmainfont{Times New Roman}
+\setmonofont{Times New Roman}
+\setCJKmainfont{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\setCJKfamilyfont{hei}{SimHei} %黑体  hei
+\newcommand{\hei}{\CJKfamily{hei}}
+\setlength{\tabcolsep}{3pt}
+\usepackage[hang]{caption2}
+\renewcommand{\captionlabeldelim}{\, }   % 改插图题目的冒号为空格
+\renewcommand{\captionfont}{\small\hei}
+\usepackage{ulem}%下划线，删除线等
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{escapechar=`,numbers=left
+,extendedchars=false, escapeinside=`'
+,basicstyle=\ttfamily
+,backgroundcolor=\color[RGB]{245,245,244}
+,keywordstyle=\bfseries\color[RGB]{130,0,0},identifierstyle=\bfseries\color[RGB]{0,0,130},numberstyle=\color[RGB]{41,41,255},commentstyle=\it\color[RGB]{130,130,130},stringstyle=\rmfamily\slshape\color[RGB]{255,0,0},showstringspaces=false,tabsize=4,texcl=true,frame=shadowbox,breaklines=true,float}
+\renewcommand{\lstlistingname}{脚本}
+\renewcommand{\lstlistlistingname}{脚本目录}
+\usepackage{Style/gzhuThesis}%
+\newcommand{\upcite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$} %设置引用,package{cite}
+
+\begin{document}
+\input{Tex/title.tex}
+%\input{Tex/cover.tex} %最后定稿时用来添加封面图片，签名后的版权声明，以及签名后的扉页图片
+\makecover %论文中文扉页 最后需注释掉，改用cover.tex中的
+\cleardoublepage %
+\makeecover  %论文英文扉页
+\cleardoublepage
+\makeatletter
+\makeatother
+\newpage
+%版权声明，仅为保持论文的完整性，最后会将其注释掉，改用cover.tex中的
+\input{Tex/copyright.tex} 
+\newpage
+\cleardoublepage
+%正文
+\setcounter{page}{1}
+\pagenumbering{Roman}
+\section*{摘\hspace{1em}要}
+\addcontentsline{toc}{section}{摘\hspace{1em}要}
+\input{Tex/cabstract.tex}\\
+{\flushleft\textbf{\large 关键词}\hspace{2em}}
+\input{Tex/ckeywords.tex}\\
+\newpage
+\cleardoublepage
+\section*{ABSTRACT}
+\addcontentsline{toc}{section}{ABSTRACT}
+\input{Tex/eabstract.tex}\\
+{\flushleft\textbf{\large KEY WORDS}\hspace{2em}}
+\input{Tex/ekeywords.tex}
+\cleardoublepage
+\newpage
+\tableofcontents%生成目录
+\cleardoublepage
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\input{Tex/preface.tex} %
+\newpage
+\input{Tex/chapter01.tex}%
+\newpage
+\input{Tex/chapter02.tex}%
+\newpage
+
+\addcontentsline{toc}{section}{参考文献}
+%\nocite{*}%乱码会报错
+\bibliography{paper} %参考文献收录在paper.bib文件
+\newpage
+\appendix
+\titlecontents{section}[0pt]{\vspace{.5\baselineskip}\bfseries}
+{\thecontentslabel\quad}{}%附录 %%目录定制
+{\hspace{.5em}\titlerule*[10pt]{$\cdot$}\contentspage}
+\titleformat{\section}{\centering\xiaoerhao\bfseries}{附录\,\thesection}{1em}{}
+\input{Tex/appendix01.tex}
+
+\newpage
+\fancyhead[RO,LE]{后\hspace{1em}记}
+\section*{后\hspace{1em}记}\addcontentsline{toc}{section}{后\hspace{1em}记}
+\input{Tex/acknowledgement.tex}
+
+
+\end{document}
