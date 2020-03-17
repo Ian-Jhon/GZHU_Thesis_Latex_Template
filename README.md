@@ -1,6 +1,6 @@
 # 广州大学-学位论文Latex模板: 
 
-本模板修改自我2019年的硕士学位论文，2020年上传于[Github](https://github.com/Ian-Jhon/GZHU_Thesis_Latex_Template), 排版基于[GZHU_Latex_Template](https://github.com/whitelok/GZHU_Latex_Template)并参考了[ucasthesis](https://github.com/mohuangrui/ucasthesis), 参考文献格式基于[gbt7714](https://github.com/CTeX-org/gbt7714-bibtex-style)宏包[v1.1.1](https://github.com/Ian-Jhon/gbt7714-bibtex-style)版，主要使用Latex生成广州大学学位论文。
+本Latex模板修改自我2019年的硕士学位论文，2020年上传于[Github](https://github.com/Ian-Jhon/GZHU_Thesis_Latex_Template), 排版基于[GZHU_Latex_Template](https://github.com/whitelok/GZHU_Latex_Template)并参考了[ucasthesis](https://github.com/mohuangrui/ucasthesis), 参考文献格式基于[gbt7714](https://github.com/CTeX-org/gbt7714-bibtex-style)宏包[v1.1.1](https://github.com/Ian-Jhon/gbt7714-bibtex-style)版，主要用来生成广州大学学位论文。
 
 ## 主要功能
 
