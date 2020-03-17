@@ -1,0 +1,25 @@
+\section{论文所用主要代码}\label{sec:code}
+\subsection{批量下载图片bash脚本}\label{ssec:download_shell}
+\begin{lstlisting}[caption=批量下载图片bash脚本,language=bash]
+#!/bin/bash
+MAX=\$2;
+for ((MAX;MAX>0; MAX--));
+        do wget -vv  --no-check-certificate "$1" -O "$MAX";
+done;
+\end{lstlisting}
+
+\subsection{简单平均法灰度化图片}\label{ssec:gray_pic}
+\begin{lstlisting}[caption=简单平均法灰度化图片,language=matlab]
+pic=imread('../abc/1');
+[h,w,d]=size(pic);
+for m=1:h
+    for n=1:w
+        sum=0;
+        for v=pic(m,n,:)
+            sum=sum+v/3;
+        end
+        pic2(m,n)=sum;
+    end
+end
+figure,imshow(pic),figure,imshow(pic2);
+\end{lstlisting}
