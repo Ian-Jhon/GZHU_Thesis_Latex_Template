@@ -1,10 +1,10 @@
-# 广州大学-学位论文Latex模板
+# 广州大学-学位论文Latex模板: 
 
-本模板基于：https://github.com/whitelok/GZHU_Latex_Template, 主要使用Latex生成广州大学学位论文
+本模板上传于[Github](https://github.com/Ian-Jhon/GZHU_Thesis_Latex_Template), 论文排版基于[GZHU_Latex_Template](https://github.com/whitelok/GZHU_Latex_Template)并参考了[ucasthesis](https://github.com/mohuangrui/ucasthesis), 参考文献基于[gbt7714](https://github.com/CTeX-org/gbt7714-bibtex-style)宏包，主要使用Latex生成广州大学学位论文。
 
 ## 主要功能
 
-+ 方便毕业生生成格式符合规范的毕业论文，本硕博皆可用
++ 方便毕业生生成固定格式的毕业论文，本硕博皆可用
 
 ## 文件架构
 
@@ -59,3 +59,4 @@
 ## 其它模板
 
 + https://github.com/Yumingyuan/GZHU-Report-Latex-Version
++ https://github.com/yernhi/collection-latex-templates
