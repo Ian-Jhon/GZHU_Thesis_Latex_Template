@@ -46,7 +46,7 @@
 
 ## 使用说明
 
-1. 首先安装Latex及其编译环境（推荐texlive，[Ctex套装](http://www.ctex.org/HomePage)也可以成功编译）
+1. 首先安装Latex及其编译环境（推荐texlive，[Ctex套装](http://www.ctex.org)也可以成功编译）
 
 2. 打开main.tex编辑论文框架
 
