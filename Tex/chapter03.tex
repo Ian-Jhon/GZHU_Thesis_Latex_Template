@@ -1,0 +1,26 @@
+%!TEX program = XeLaTeX
+%!TeX root =main.tex
+%请在下面输入本章内容。
+\section{章节标题}
+这是论文的章节标题。
+
+\subsection{章节的子标题}
+这是章节的子标题。
+
+\subsubsection{章节的子子标题}
+    这是章节的子子标题。此时无法再分更细的标题，如果需要，可以使用列表方式来区分不同层次的内容。
+
+    \begin{enumerate}[label=(\arabic*), leftmargin=*]
+        \item \textbf{子子子标题}
+        
+        这是这是章节的子子子标题。
+        
+        \item \textbf{子子子标题}
+        
+        可以通过修改\verb|[label=(\arabic*), leftmargin=*]|里面的内容定义列表的形式。
+        
+        \item \textbf{子子子标题}
+        
+        把在\verb|(\arabic*)|的括号去掉就是普通的“1.”、“2.”、“3.”。。
+    \end{enumerate}
+
